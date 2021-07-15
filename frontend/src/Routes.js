@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import JoblyApi from "./api";
 import Home from "./Home";
 import NavBar from "./Navbar";
-import Companies from "./Companies";
+import List from "./List";
 import CompanyDetail from "./CompanyDetail";
-import Jobs from "./Jobs";
 import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
 
 function Routes() {
+  const [companies, setCompanies] = useState([]);
+  const [jobs, setJobs] = useState([]);
+
+  useEffect(() => {
+    async function getCompanies() {
+      const res = await JoblyApi.getCompanies();
+      setCompanies(res.companies);
+      return res.companies;
+    }
+    getCompanies();
+  }, []);
+
+  useEffect(() => {
+    async function getJobs() {
+      const res = await JoblyApi.getJobs();
+      setJobs(res.jobs);
+      return res.jobs;
+    }
+    getJobs();
+  }, []);
+
   return (
     <BrowserRouter>
       <NavBar />
@@ -19,13 +40,13 @@ function Routes() {
             <Home />
           </Route>
           <Route exact path="/companies">
-            <Companies />
+            <List list={companies} />
           </Route>
           <Route exact path="/companies/:handle">
             <CompanyDetail />
           </Route>
           <Route exact path="/jobs">
-            <Jobs />
+            <List list={jobs} />
           </Route>
           <Route exact path="/login">
             <Login />

@@ -10,8 +10,8 @@ function NavBar() {
         <NavLink exact to="/" className="navbar-brand">
           Home
         </NavLink>
-        <Nav className="mr-auto" navbar>
-          <NavItem>
+        <Nav className="ml-auto" navbar>
+          <NavItem className="ml-auto">
             <NavLink to="/companies">Companies</NavLink>
           </NavItem>
           <NavItem>
