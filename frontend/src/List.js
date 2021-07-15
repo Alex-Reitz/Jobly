@@ -1,29 +1,28 @@
 import React from "react";
+import CompanyCard from "./CompanyCard";
+import JobCard from "./JobCard";
 
 function List({ list }) {
   let listValues = Object.values(list);
-
-  if (listValues.length == 200) {
+  if (listValues.length === 200) {
     return (
       <div>
-        <h1>This is the Jobs Component</h1>
+        <h1>Take a look at these Jobs!</h1>
         {listValues.map((job) => (
-          <li key={job.id}>{job.title}</li>
+          <JobCard key={job.id} info={job} />
         ))}
       </div>
     );
   } else {
     return (
       <div>
-        <h1>This is the Companies component</h1>
+        <h1>Here are all the companies we have</h1>
         {listValues.map((company) => (
-          <li key={company.handle}>{company.name}</li>
+          <CompanyCard key={company.handle} info={company} />
         ))}
       </div>
     );
   }
-
-  /*  */
 }
 
 export default List;

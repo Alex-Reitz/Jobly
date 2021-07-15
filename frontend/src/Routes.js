@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import JoblyApi from "./api";
 import Home from "./Home";
+import CompanyDetails from "./CompanyDetails";
 import NavBar from "./Navbar";
 import List from "./List";
-import CompanyDetail from "./CompanyDetail";
 import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
@@ -43,7 +43,7 @@ function Routes() {
             <List list={companies} />
           </Route>
           <Route exact path="/companies/:handle">
-            <CompanyDetail />
+            <CompanyDetails />
           </Route>
           <Route exact path="/jobs">
             <List list={jobs} />
