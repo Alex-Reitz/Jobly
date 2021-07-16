@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import JobCard from "./JobCard";
 
 function CompanyDetails() {
-  //Filtering on backend to show jobs for a particular company
+  //TODO Filtering on backend to show jobs for a particular company
 
   return (
     <div>

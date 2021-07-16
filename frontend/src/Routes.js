@@ -10,9 +10,10 @@ import Signup from "./Signup";
 import Profile from "./Profile";
 
 function Routes() {
+  //state passed down to list component depending on which route a user takes
   const [companies, setCompanies] = useState([]);
   const [jobs, setJobs] = useState([]);
-
+  //Gets the companies list from backend on page load
   useEffect(() => {
     async function getCompanies() {
       const res = await JoblyApi.getCompanies();
@@ -21,7 +22,7 @@ function Routes() {
     }
     getCompanies();
   }, []);
-
+  //Gets jobs list from backend on page load
   useEffect(() => {
     async function getJobs() {
       const res = await JoblyApi.getJobs();
@@ -30,6 +31,44 @@ function Routes() {
     }
     getJobs();
   }, []);
+
+  const searchCompanyNames = (data) => {
+    if (data.name.length === 0) {
+      async function getCompanies() {
+        const res = await JoblyApi.getCompanies();
+        setCompanies(res.companies);
+        return res.companies;
+      }
+      getCompanies();
+    } else {
+      async function searchHandle() {
+        let res = await JoblyApi.searchCompanies(data);
+        console.log(res);
+        setCompanies(res.companies);
+        return res.companies;
+      }
+      searchHandle();
+    }
+  };
+
+  const searchJobNames = (data) => {
+    if (data.title.length === 0) {
+      async function getJobs() {
+        const res = await JoblyApi.getJobs();
+        setJobs(res.jobs);
+        return res.jobs;
+      }
+      getJobs();
+    } else {
+      async function searchName() {
+        let res = await JoblyApi.searchJobs(data);
+        console.log(res);
+        setJobs(res.jobs);
+        return res.jobs;
+      }
+      searchName();
+    }
+  };
 
   return (
     <BrowserRouter>
@@ -40,13 +79,13 @@ function Routes() {
             <Home />
           </Route>
           <Route exact path="/companies">
-            <List list={companies} />
+            <List search={searchCompanyNames} list={companies} />
           </Route>
           <Route exact path="/companies/:handle">
             <CompanyDetails />
           </Route>
           <Route exact path="/jobs">
-            <List list={jobs} />
+            <List search={searchJobNames} list={jobs} />
           </Route>
           <Route exact path="/login">
             <Login />
