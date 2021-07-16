@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-/* {handle: "wiggins-frederick-boyer", name: "Wiggins, Frederick and Boyer", description: "Institution structure say argue bit. Each option h…n. Majority white hour there reach drive produce.", numEmployees: 298, logoUrl: "/logos/logo2.png"}
+import JoblyApi from "./api";
+/*
 description: "Institution structure say argue bit. Each option high executive easy pattern. Majority white hour there reach drive produce."
 handle: "wiggins-frederick-boyer"
 logoUrl: "/logos/logo2.png"
