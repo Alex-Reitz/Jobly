@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import JoblyApi from "./api";
 /*
 description: "Institution structure say argue bit. Each option high executive easy pattern. Majority white hour there reach drive produce."
 handle: "wiggins-frederick-boyer"

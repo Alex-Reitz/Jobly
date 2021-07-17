@@ -7,8 +7,8 @@ function App() {
   //state passed down to list component depending on which route a user takes
   const [companies, setCompanies] = useState([]);
   const [jobs, setJobs] = useState([]);
-  const [token, setToken] = useState([]);
-  const [currentUser, setCurrentUser] = useState("");
+  const [token, setToken] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
   //Gets the companies list from backend on page load
   useEffect(() => {
     async function getCompanies() {
@@ -76,6 +76,9 @@ function App() {
   const loginUser = (data) => {
     async function login(data) {
       const res = await JoblyApi.login(data);
+      setCurrentUser(res.user);
+      setToken(res.token);
+      console.log(token, currentUser);
       return res;
     }
     login(data);
@@ -84,7 +87,7 @@ function App() {
   useEffect(() => {
     async function getUserInfo() {
       const res = await JoblyApi.getUser();
-      setCurrentUser(res);
+      console.log(res);
       return res;
     }
     getUserInfo();
@@ -99,7 +102,6 @@ function App() {
         searchJobNames={searchJobNames}
         signup={signupUser}
         login={loginUser}
-        token={token}
       />
     </div>
   );
