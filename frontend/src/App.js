@@ -7,6 +7,8 @@ function App() {
   //state passed down to list component depending on which route a user takes
   const [companies, setCompanies] = useState([]);
   const [jobs, setJobs] = useState([]);
+  const [token, setToken] = useState([]);
+  const [currentUser, setCurrentUser] = useState("");
   //Gets the companies list from backend on page load
   useEffect(() => {
     async function getCompanies() {
@@ -37,7 +39,6 @@ function App() {
     } else {
       async function searchHandle() {
         let res = await JoblyApi.searchCompanies(data);
-        console.log(res);
         setCompanies(res.companies);
         return res.companies;
       }
@@ -56,13 +57,38 @@ function App() {
     } else {
       async function searchName() {
         let res = await JoblyApi.searchJobs(data);
-        console.log(res);
         setJobs(res.jobs);
         return res.jobs;
       }
       searchName();
     }
   };
+  //register as a new user
+  const signupUser = (data) => {
+    async function signUp(data) {
+      const res = await JoblyApi.signUp(data);
+      setToken(res.token);
+      return res;
+    }
+    signUp(data);
+  };
+  //Login for an existing user
+  const loginUser = (data) => {
+    async function login(data) {
+      const res = await JoblyApi.login(data);
+      return res;
+    }
+    login(data);
+  };
+  //Call backend to get information about a newly logged in user and update currentUser state when token changes
+  useEffect(() => {
+    async function getUserInfo() {
+      const res = await JoblyApi.getUser();
+      setCurrentUser(res);
+      return res;
+    }
+    getUserInfo();
+  }, [token]);
 
   return (
     <div className="App">
@@ -71,6 +97,9 @@ function App() {
         jobs={jobs}
         searchCompanyNames={searchCompanyNames}
         searchJobNames={searchJobNames}
+        signup={signupUser}
+        login={loginUser}
+        token={token}
       />
     </div>
   );

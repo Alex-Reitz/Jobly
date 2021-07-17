@@ -8,7 +8,14 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
 
-function Routes({ companies, jobs, searchCompanyNames, searchJobNames }) {
+function Routes({
+  companies,
+  jobs,
+  searchCompanyNames,
+  searchJobNames,
+  signup,
+  login,
+}) {
   return (
     <BrowserRouter>
       <NavBar />
@@ -27,10 +34,10 @@ function Routes({ companies, jobs, searchCompanyNames, searchJobNames }) {
             <List search={searchJobNames} list={jobs} />
           </Route>
           <Route exact path="/login">
-            <Login />
+            <Login login={login} />
           </Route>
           <Route exact path="/signup">
-            <Signup />
+            <Signup signup={signup} />
           </Route>
           <Route exact path="/profile">
             <Profile />

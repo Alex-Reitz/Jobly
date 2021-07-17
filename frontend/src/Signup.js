@@ -19,6 +19,7 @@ function Signup({ signup }) {
 
   const gatherInput = (evt) => {
     evt.preventDefault();
+    console.log({ ...formData });
     signup({ ...formData });
     setFormData({
       username: "",

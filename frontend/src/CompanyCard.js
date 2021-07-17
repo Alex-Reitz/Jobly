@@ -13,11 +13,7 @@ function CompanyCard({ info }) {
     <div className="content">
       <p>
         <strong>Company Name:</strong>
-        {info.name}
-      </p>
-      <p>
-        See more about{" "}
-        <Link to={"/companies/" + info.handle}>{info.handle}</Link>
+        <Link to={"/companies/" + info.handle}>{info.name}</Link>
       </p>
       <p>
         <strong>Description: </strong>
