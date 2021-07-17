@@ -20,10 +20,22 @@ function CompanyDetails() {
   return (
     <div>
       <h1>Company Details</h1>
-      <p>{companyData.name}</p>
-      <p>{companyData.description}</p>
-      <p>{companyData.handle}</p>
-      <p>{companyData.numEmployees}</p>
+      <p>
+        <strong>Company Name: </strong>
+        {companyData.name}
+      </p>
+      <p>
+        <strong>Description: </strong>
+        {companyData.description}
+      </p>
+      <p>
+        <strong>Company Handle: </strong>
+        {companyData.handle}
+      </p>
+      <p>
+        <strong>Number of Employees: </strong>
+        {companyData.numEmployees}
+      </p>
     </div>
   );
 }
