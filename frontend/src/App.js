@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Routes from "./Routes";
+import Routes from "./Navigation/Routes";
 import JoblyApi from "./api";
 
 function App() {
@@ -76,9 +76,9 @@ function App() {
   const loginUser = (data) => {
     async function login(data) {
       const res = await JoblyApi.login(data);
+      console.log(res);
       setCurrentUser(res.user);
       setToken(res.token);
-      console.log(token, currentUser);
       return res;
     }
     login(data);
@@ -86,12 +86,12 @@ function App() {
   //Call backend to get information about a newly logged in user and update currentUser state when token changes
   useEffect(() => {
     async function getUserInfo() {
-      const res = await JoblyApi.getUser();
+      const res = await JoblyApi.getUser(currentUser.username);
       console.log(res);
       return res;
     }
     getUserInfo();
-  }, [token]);
+  }, [token, currentUser]);
 
   return (
     <div className="App">

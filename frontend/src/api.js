@@ -62,11 +62,12 @@ class JoblyApi {
   }
   static async login(data) {
     let res = await this.request(`auth/token`, data, "post");
-    console.log(res.user, res.token);
+    JoblyApi.token = res.token;
     return res;
   }
   static async signUp(data) {
     let res = await this.request(`auth/register`, data, "post");
+
     return res;
   }
   static async logout() {
@@ -78,10 +79,10 @@ class JoblyApi {
     return res;
   }
 }
-
-JoblyApi.token =
+//Need to update this token based on the return from signup or login api calls
+/* JoblyApi.token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-  "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc"; */
 
 export default JoblyApi;

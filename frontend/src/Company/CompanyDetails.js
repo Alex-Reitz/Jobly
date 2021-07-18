@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import JoblyApi from "./api";
-import JobCard from "./JobCard";
+import JoblyApi from "../api";
+import JobCard from "../Jobs/JobCard";
 
 function CompanyDetails() {
   //TODO Filtering on backend to show jobs for a particular company

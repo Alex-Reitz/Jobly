@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 function Signup({ login }) {
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
+    username: "AlexReitz",
+    password: "password",
   });
 
   const handleChange = (evt) => {

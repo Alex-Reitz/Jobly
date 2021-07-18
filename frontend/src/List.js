@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import CompanyCard from "./CompanyCard";
+import CompanyCard from "./Company/CompanyCard";
 import JobCard from "./JobCard";
 
 function List({ list, search }) {
-  console.log();
   const [companyFormData, setCompanyFormData] = useState({
     name: "",
   });
