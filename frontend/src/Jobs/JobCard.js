@@ -1,4 +1,5 @@
 import React from "react";
+import JoblyApi from "../api";
 
 /* {id: 20, title: "Tourist information centre manager", salary: 88000, equity: "0", companyHandle: "foster-rice", …}
 companyHandle: "foster-rice"
@@ -9,7 +10,52 @@ salary: 88000
 title: "Tourist information centre manager" */
 
 function JobCard({ info }) {
-  if (!info.equity && !info.salary) {
+  const apply = () => {
+    async function applyToJob() {
+      const res = await JoblyApi.apply();
+      console.log(res);
+      return res;
+    }
+    applyToJob();
+  };
+  return (
+    <div className="job-content">
+      <div className="company-title">
+        {info.companyName ? (
+          <p>
+            <strong>Company Name: </strong>
+            {info.companyName}
+          </p>
+        ) : undefined}
+      </div>
+      <div className="job-title">
+        {info.title ? (
+          <p>
+            <strong>Job Title: </strong>
+            {info.title}
+          </p>
+        ) : undefined}
+      </div>
+      <div className="job-salary">
+        {info.salary ? (
+          <p>Job Salary: {info.salary}</p>
+        ) : (
+          <p>Sorry, no salary data to show.</p>
+        )}
+      </div>
+      <div className="job-equity">
+        {info.equity > 0 ? (
+          <p>Job equity: {info.equity}</p>
+        ) : (
+          <p>Sorry, no equity data to show.</p>
+        )}
+      </div>
+      <button>Apply</button>
+      <hr></hr>
+    </div>
+  );
+
+  /* if (!info.equity && !info.salary) {
     return (
       <div className="content">
         <p>
@@ -85,7 +131,7 @@ function JobCard({ info }) {
         <hr></hr>
       </div>
     );
-  }
+  } */
 }
 
 export default JobCard;

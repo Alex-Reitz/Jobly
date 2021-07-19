@@ -5,15 +5,16 @@ import JobCard from "../Jobs/JobCard";
 import UserContext from "../Context/userContext";
 
 function CompanyDetails() {
-  //TODO Filtering on backend to show jobs for a particular company
   const { handle } = useParams();
   const [companyData, setCompanyData] = useState([]);
+  const [jobsData, setJobsData] = useState([]);
   const user = useContext(UserContext);
 
   useEffect(() => {
     async function getCompanyHandle(handle) {
       let res = await JoblyApi.getCompany(handle);
       setCompanyData(res);
+      setJobsData(res.jobs);
       return res;
     }
     getCompanyHandle(handle);
@@ -45,6 +46,14 @@ function CompanyDetails() {
           <strong>Number of Employees: </strong>
           {companyData.numEmployees}
         </p>
+        <hr></hr>
+        <div className="jobs-data">
+          <h4>Jobs posted for this company</h4>
+          <hr></hr>
+          {jobsData.map((job) => (
+            <JobCard key={job.id} info={job} />
+          ))}
+        </div>
       </div>
     );
   }
