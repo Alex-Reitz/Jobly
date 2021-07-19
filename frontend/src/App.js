@@ -3,67 +3,13 @@ import "./App.css";
 import Routes from "./Navigation/Routes";
 import JoblyApi from "./api";
 import UserContext from "./Context/userContext";
+import useLocalStorage from "./hooks";
 
 function App() {
   //state passed down to list component depending on which route a user takes
-  const [companies, setCompanies] = useState([]);
-  const [jobs, setJobs] = useState([]);
   const [token, setToken] = useState("");
-  const [currentUser, setCurrentUser] = useState({});
-  //Gets the companies list from backend on page load
-  useEffect(() => {
-    async function getCompanies() {
-      const res = await JoblyApi.getCompanies();
-      setCompanies(res.companies);
-      return res.companies;
-    }
-    getCompanies();
-  }, []);
-  //Gets jobs list from backend on page load
-  useEffect(() => {
-    async function getJobs() {
-      const res = await JoblyApi.getJobs();
-      setJobs(res.jobs);
-      return res.jobs;
-    }
-    getJobs();
-  }, []);
-  //function to search Company names or return all companies if form is blank on submission
-  const searchCompanyNames = (data) => {
-    if (data.name.length === 0) {
-      async function getCompanies() {
-        const res = await JoblyApi.getCompanies();
-        setCompanies(res.companies);
-        return res.companies;
-      }
-      getCompanies();
-    } else {
-      async function searchHandle() {
-        let res = await JoblyApi.searchCompanies(data);
-        setCompanies(res.companies);
-        return res.companies;
-      }
-      searchHandle();
-    }
-  };
-  //function to get all jobs by title matching a query from the search form, returns all jobs if form is blank on submission
-  const searchJobNames = (data) => {
-    if (data.title.length === 0) {
-      async function getJobs() {
-        const res = await JoblyApi.getJobs();
-        setJobs(res.jobs);
-        return res.jobs;
-      }
-      getJobs();
-    } else {
-      async function searchName() {
-        let res = await JoblyApi.searchJobs(data);
-        setJobs(res.jobs);
-        return res.jobs;
-      }
-      searchName();
-    }
-  };
+  const [currentUser, setCurrentUser] = useLocalStorage("currentUser", {});
+
   //register as a new user
   const signupUser = (data) => {
     async function signUp(data) {
@@ -101,15 +47,7 @@ function App() {
   return (
     <UserContext.Provider value={currentUser}>
       <div className="App">
-        <Routes
-          companies={companies}
-          jobs={jobs}
-          searchCompanyNames={searchCompanyNames}
-          searchJobNames={searchJobNames}
-          signup={signupUser}
-          login={loginUser}
-          logout={logout}
-        />
+        <Routes signup={signupUser} login={loginUser} logout={logout} />
       </div>
     </UserContext.Provider>
   );

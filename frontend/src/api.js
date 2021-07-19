@@ -72,6 +72,7 @@ class JoblyApi {
   }
   static async logout() {
     let res = await this.request(`logout`);
+    JoblyApi.token = "";
     return res;
   }
   static async getUser(username) {

@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CompanyCard from "./CompanyCard";
+import JoblyApi from "../api";
 
-function CompanyList({ list, search }) {
+function CompanyList() {
   const [companyFormData, setCompanyFormData] = useState({
     name: "",
   });
+  const [companies, setCompanies] = useState([]);
+
+  //Gets the companies list from backend on page load
+  useEffect(() => {
+    async function getCompanies() {
+      const res = await JoblyApi.getCompanies();
+      setCompanies(res.companies);
+      return res.companies;
+    }
+    getCompanies();
+  }, []);
+  //Gathers input from form submission
   const gatherCompanyInput = (evt) => {
     evt.preventDefault();
-    search({ ...companyFormData });
+    searchCompanyNames({ ...companyFormData });
   };
+  //Updates form data
   const handleCompanyChange = (evt) => {
     const { name, value } = evt.target;
     setCompanyFormData((companyFormData) => ({
@@ -16,7 +30,25 @@ function CompanyList({ list, search }) {
       [name]: value,
     }));
   };
-  let listValues = Object.values(list);
+
+  //function to search Company names or return all companies if form is blank on submission
+  const searchCompanyNames = (data) => {
+    if (data.name.length === 0) {
+      async function getCompanies() {
+        const res = await JoblyApi.getCompanies();
+        setCompanies(res.companies);
+        return res.companies;
+      }
+      getCompanies();
+    } else {
+      async function searchHandle() {
+        let res = await JoblyApi.searchCompanies(data);
+        setCompanies(res.companies);
+        return res.companies;
+      }
+      searchHandle();
+    }
+  };
 
   return (
     <div>
@@ -34,7 +66,7 @@ function CompanyList({ list, search }) {
         </form>
         <hr></hr>
       </div>
-      {listValues.map((company) => (
+      {companies.map((company) => (
         <CompanyCard key={company.handle} info={company} />
       ))}
     </div>

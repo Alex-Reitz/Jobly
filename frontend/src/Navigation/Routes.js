@@ -10,15 +10,7 @@ import Signup from "../Signup";
 import Profile from "./Profile";
 import Logout from "./Logout";
 
-function Routes({
-  companies,
-  jobs,
-  searchCompanyNames,
-  searchJobNames,
-  signup,
-  login,
-  logout,
-}) {
+function Routes({ signup, login, logout }) {
   return (
     <BrowserRouter>
       <NavBar />
@@ -28,13 +20,13 @@ function Routes({
             <Home />
           </Route>
           <Route exact path="/companies">
-            <CompanyList search={searchCompanyNames} list={companies} />
+            <CompanyList />
           </Route>
           <Route exact path="/companies/:handle">
             <CompanyDetails />
           </Route>
           <Route exact path="/jobs">
-            <JobList search={searchJobNames} list={jobs} />
+            <JobList />
           </Route>
           <Route exact path="/login">
             <Login login={login} />

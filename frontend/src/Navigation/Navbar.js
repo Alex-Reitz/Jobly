@@ -6,7 +6,6 @@ import UserContext from "../Context/userContext";
 
 function NavBar() {
   const user = useContext(UserContext);
-  console.log(user);
   if (!user.username) {
     return (
       <div>

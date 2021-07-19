@@ -1,10 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
+import JoblyApi from "../api";
 
-function JobList({ list, search }) {
+function JobList() {
   const [jobFormData, setJobFormData] = useState({
     title: "",
   });
+  const [jobs, setJobs] = useState([]);
+  //Gets jobs list from backend on page load
+  useEffect(() => {
+    async function getJobs() {
+      const res = await JoblyApi.getJobs();
+      setJobs(res.jobs);
+      return res.jobs;
+    }
+    getJobs();
+  }, []);
+
+  //function to get all jobs by title matching a query from the search form, returns all jobs if form is blank on submission
+  const searchJobNames = (data) => {
+    if (data.title.length === 0) {
+      async function getJobs() {
+        const res = await JoblyApi.getJobs();
+        setJobs(res.jobs);
+        return res.jobs;
+      }
+      getJobs();
+    } else {
+      async function searchName() {
+        let res = await JoblyApi.searchJobs(data);
+        setJobs(res.jobs);
+        return res.jobs;
+      }
+      searchName();
+    }
+  };
+
+  //Handle form change
   const handleJobChange = (evt) => {
     const { name, value } = evt.target;
     setJobFormData((jobFormData) => ({
@@ -12,11 +44,11 @@ function JobList({ list, search }) {
       [name]: value,
     }));
   };
+  //Gther input from form on submission
   const gatherJobInput = (evt) => {
     evt.preventDefault();
-    search({ ...jobFormData });
+    searchJobNames({ ...jobFormData });
   };
-  let listValues = Object.values(list);
   return (
     <div>
       <h1>Take a look at these Jobs!</h1>
@@ -33,7 +65,7 @@ function JobList({ list, search }) {
         </form>
         <hr></hr>
       </div>
-      {listValues.map((job) => (
+      {jobs.map((job) => (
         <JobCard key={job.id} info={job} />
       ))}
     </div>
