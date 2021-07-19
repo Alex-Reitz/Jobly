@@ -8,13 +8,9 @@ function Home() {
     return (
       <div>
         <h3>Welcome to Jobly!</h3>
-        <Link exact to="/signup">
-          Signup
-        </Link>
+        <Link to="/signup">Signup</Link>
         <br />
-        <Link exact to="/login">
-          Login
-        </Link>
+        <Link to="/login">Login</Link>
       </div>
     );
   } else {

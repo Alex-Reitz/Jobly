@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import JobCard from "./JobCard";
 import JoblyApi from "../api";
+import UserContext from "../Context/userContext";
 
 function JobList() {
   const [jobFormData, setJobFormData] = useState({
     title: "",
   });
   const [jobs, setJobs] = useState([]);
+  const user = useContext(UserContext);
+
   //Gets jobs list from backend on page load
   useEffect(() => {
     async function getJobs() {
@@ -49,27 +52,35 @@ function JobList() {
     evt.preventDefault();
     searchJobNames({ ...jobFormData });
   };
-  return (
-    <div>
-      <h1>Take a look at these Jobs!</h1>
-      <div className="search">
-        <form onSubmit={gatherJobInput}>
-          <label htmlFor="title">Search Job Titles</label>
-          <input
-            onChange={handleJobChange}
-            type="text"
-            name="title"
-            value={jobFormData.title}
-            id="title"
-          />
-        </form>
-        <hr></hr>
+  if (!user.username) {
+    return (
+      <div>
+        <h1>You must be logged in to access the jobs list</h1>
       </div>
-      {jobs.map((job) => (
-        <JobCard key={job.id} info={job} />
-      ))}
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <h1>Take a look at these Jobs!</h1>
+        <div className="search">
+          <form onSubmit={gatherJobInput}>
+            <label htmlFor="title">Search Job Titles</label>
+            <input
+              onChange={handleJobChange}
+              type="text"
+              name="title"
+              value={jobFormData.title}
+              id="title"
+            />
+          </form>
+          <hr></hr>
+        </div>
+        {jobs.map((job) => (
+          <JobCard key={job.id} info={job} />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default JobList;

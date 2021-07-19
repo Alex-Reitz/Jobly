@@ -60,23 +60,34 @@ class JoblyApi {
     let res = await this.request(`jobs`);
     return res;
   }
+  //Login, calls backend and gets user info from DB
   static async login(data) {
     let res = await this.request(`auth/token`, data, "post");
     JoblyApi.token = res.token;
     return res;
   }
+  //Signups, registers new user
   static async signUp(data) {
     let res = await this.request(`auth/register`, data, "post");
     JoblyApi.token = res.token;
     return res;
   }
+  //Logout, clears local storage, sets currentUser and token to blank values
   static async logout() {
     let res = await this.request(`logout`);
     JoblyApi.token = "";
     return res;
   }
+  //Get information on a specific user
   static async getUser(username) {
     let res = await this.request(`users/${username}`);
+    return res;
+  }
+  //update a user's firstName, lastName, email
+  static async update(username, data) {
+    console.log(username, data);
+    let res = await this.request(`users/${username}`, data, "patch");
+    console.log(res);
     return res;
   }
 }

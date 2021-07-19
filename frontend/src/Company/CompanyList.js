@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CompanyCard from "./CompanyCard";
 import JoblyApi from "../api";
+import UserContext from "../Context/userContext";
 
 function CompanyList() {
   const [companyFormData, setCompanyFormData] = useState({
     name: "",
   });
   const [companies, setCompanies] = useState([]);
-
+  const user = useContext(UserContext);
   //Gets the companies list from backend on page load
   useEffect(() => {
     async function getCompanies() {
@@ -49,28 +50,35 @@ function CompanyList() {
       searchHandle();
     }
   };
-
-  return (
-    <div>
-      <h1>Here are all the companies we have</h1>
-      <div className="search">
-        <form onSubmit={gatherCompanyInput}>
-          <label htmlFor="name">Search Company Names</label>
-          <input
-            onChange={handleCompanyChange}
-            type="text"
-            name="name"
-            value={companyFormData.name}
-            id="name"
-          />
-        </form>
-        <hr></hr>
+  if (!user.username) {
+    return (
+      <div>
+        <h1>You must be logged in to access the company list</h1>
       </div>
-      {companies.map((company) => (
-        <CompanyCard key={company.handle} info={company} />
-      ))}
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <h1>Here are all the companies we have</h1>
+        <div className="search">
+          <form onSubmit={gatherCompanyInput}>
+            <label htmlFor="name">Search Company Names</label>
+            <input
+              onChange={handleCompanyChange}
+              type="text"
+              name="name"
+              value={companyFormData.name}
+              id="name"
+            />
+          </form>
+          <hr></hr>
+        </div>
+        {companies.map((company) => (
+          <CompanyCard key={company.handle} info={company} />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default CompanyList;

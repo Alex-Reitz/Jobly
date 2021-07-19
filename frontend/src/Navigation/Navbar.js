@@ -48,7 +48,7 @@ function NavBar() {
               <NavLink to="/jobs">Jobs</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/profile">Profile</NavLink>
+              <NavLink to="/profile">{user.username}</NavLink>
             </NavItem>
             <NavItem>
               <NavLink to="/logout">Logout</NavLink>
