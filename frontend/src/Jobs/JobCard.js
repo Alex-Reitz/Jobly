@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import JoblyApi from "../api";
+import UserContext from "../Context/userContext";
 
 /* {id: 20, title: "Tourist information centre manager", salary: 88000, equity: "0", companyHandle: "foster-rice", …}
 companyHandle: "foster-rice"
@@ -10,13 +11,14 @@ salary: 88000
 title: "Tourist information centre manager" */
 
 function JobCard({ info }) {
-  const apply = () => {
-    async function applyToJob() {
-      const res = await JoblyApi.apply();
+  const user = useContext(UserContext);
+  const apply = (username, jobid) => {
+    async function applyToJob(username, jobid) {
+      const res = await JoblyApi.apply(user.username, info.id);
       console.log(res);
       return res;
     }
-    applyToJob();
+    applyToJob(username, jobid);
   };
   return (
     <div className="job-content">
@@ -50,7 +52,7 @@ function JobCard({ info }) {
           <p>Sorry, no equity data to show.</p>
         )}
       </div>
-      <button>Apply</button>
+      <button onClick={apply}>Apply</button>
       <hr></hr>
     </div>
   );
