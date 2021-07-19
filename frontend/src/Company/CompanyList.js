@@ -17,6 +17,7 @@ function CompanyList({ list, search }) {
     }));
   };
   let listValues = Object.values(list);
+
   return (
     <div>
       <h1>Here are all the companies we have</h1>

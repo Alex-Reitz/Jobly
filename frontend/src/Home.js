@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card, CardBody, CardTitle } from "reactstrap";
+import UserContext from "./Context/userContext";
+import { Link } from "react-router-dom";
 
 function Home() {
-  return (
-    <section className="col-md-8">
-      <Card>
-        <CardBody className="text-center">
-          <CardTitle>
-            <p className="font-weight-bold">Welcome to Jobly!</p>
-          </CardTitle>
-        </CardBody>
-      </Card>
-    </section>
-  );
+  const user = useContext(UserContext);
+  if (!user.username) {
+    return (
+      <div>
+        <h3>Welcome to Jobly!</h3>
+        <Link exact to="/signup">
+          Signup
+        </Link>
+        <br />
+        <Link exact to="/login">
+          Login
+        </Link>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h3>Welcome to Jobly {user.username}</h3>
+      </div>
+    );
+  }
 }
 
 export default Home;

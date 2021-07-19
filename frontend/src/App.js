@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Routes from "./Navigation/Routes";
 import JoblyApi from "./api";
+import UserContext from "./Context/userContext";
 
 function App() {
   //state passed down to list component depending on which route a user takes
@@ -83,27 +84,34 @@ function App() {
     }
     login(data);
   };
+  //Logout
+  const logout = () => {
+    setCurrentUser({});
+    setToken("");
+  };
   //Call backend to get information about a newly logged in user and update currentUser state when token changes
   useEffect(() => {
     async function getUserInfo() {
       const res = await JoblyApi.getUser(currentUser.username);
-      console.log(res);
       return res;
     }
     getUserInfo();
   }, [token, currentUser]);
 
   return (
-    <div className="App">
-      <Routes
-        companies={companies}
-        jobs={jobs}
-        searchCompanyNames={searchCompanyNames}
-        searchJobNames={searchJobNames}
-        signup={signupUser}
-        login={loginUser}
-      />
-    </div>
+    <UserContext.Provider value={currentUser}>
+      <div className="App">
+        <Routes
+          companies={companies}
+          jobs={jobs}
+          searchCompanyNames={searchCompanyNames}
+          searchJobNames={searchJobNames}
+          signup={signupUser}
+          login={loginUser}
+          logout={logout}
+        />
+      </div>
+    </UserContext.Provider>
   );
 }
 

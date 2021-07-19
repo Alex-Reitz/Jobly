@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import UserContext from "../Context/userContext";
 
 function Signup({ login }) {
   const [formData, setFormData] = useState({
     username: "AlexReitz",
     password: "password",
   });
+  const user = useContext(UserContext);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -23,34 +25,42 @@ function Signup({ login }) {
     });
   };
 
-  return (
-    <div>
-      <form onSubmit={gatherInput}>
-        <div>
-          <label htmlFor="firstName">Username</label>
-          <input
-            onChange={handleChange}
-            type="text"
-            name="username"
-            value={formData.username}
-            id="username"
-          />
-        </div>
-        <div>
-          <label htmlFor="firstName">Password</label>
-          <input
-            onChange={handleChange}
-            type="text"
-            name="password"
-            value={formData.password}
-            id="password"
-          />
-        </div>
+  if (!user.username) {
+    return (
+      <div>
+        <form onSubmit={gatherInput}>
+          <div>
+            <label htmlFor="firstName">Username</label>
+            <input
+              onChange={handleChange}
+              type="text"
+              name="username"
+              value={formData.username}
+              id="username"
+            />
+          </div>
+          <div>
+            <label htmlFor="firstName">Password</label>
+            <input
+              onChange={handleChange}
+              type="text"
+              name="password"
+              value={formData.password}
+              id="password"
+            />
+          </div>
 
-        <button id="signup">Login</button>
-      </form>
-    </div>
-  );
+          <button id="signup">Login</button>
+        </form>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>Welcome {user.username}</p>
+      </div>
+    );
+  }
 }
 
 export default Signup;
