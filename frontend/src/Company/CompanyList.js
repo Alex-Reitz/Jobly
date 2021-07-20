@@ -52,18 +52,19 @@ function CompanyList() {
   };
   if (!currentUser.username) {
     return (
-      <div>
+      <div className="logged-in-warning">
         <h1>You must be logged in to access the company list</h1>
       </div>
     );
   } else {
     return (
-      <div>
-        <h1>Here are all the companies we have</h1>
+      <div className="company-list-container">
+        <h1 className="company-heading">Here are all the companies we have</h1>
         <div className="search">
           <form onSubmit={gatherCompanyInput}>
             <label htmlFor="name">Search Company Names</label>
             <input
+              classname="company-search-input"
               onChange={handleCompanyChange}
               type="text"
               name="name"

@@ -28,13 +28,14 @@ function Signup({ login }) {
 
   if (!currentUser.username) {
     return (
-      <div>
+      <div className="login-form">
         <form onSubmit={gatherInput}>
-          <div>
+          <div className="login-div">
             <label htmlFor="firstName">
-              <h5 className="input-label">Username</h5>
+              <h6 className="login-input-label">Username</h6>
             </label>
             <input
+              className="login-input"
               onChange={handleChange}
               type="text"
               name="username"
@@ -42,11 +43,12 @@ function Signup({ login }) {
               id="username"
             />
           </div>
-          <div>
+          <div className="login-div">
             <label htmlFor="firstName">
-              <h5 className="input-label">Password</h5>
+              <h6 className="login-input-label">Password</h6>
             </label>
             <input
+              className="login-input"
               onChange={handleChange}
               type="password"
               name="password"
@@ -61,8 +63,8 @@ function Signup({ login }) {
     );
   } else {
     return (
-      <div>
-        <p>Welcome {currentUser.username}</p>
+      <div class="welcome">
+        <h3>Welcome, {currentUser.username}</h3>
       </div>
     );
   }

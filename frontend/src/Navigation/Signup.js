@@ -35,13 +35,14 @@ function Signup({ signup }) {
 
   if (!user.username) {
     return (
-      <div>
+      <div className="Signup">
         <form onSubmit={gatherInput}>
-          <div>
+          <div className="signup-div">
             <label htmlFor="username">
-              <h6 className="input-label"> Username</h6>
+              <h6 className="signup-input-label"> Username</h6>
             </label>
             <input
+              className="signup-input"
               onChange={handleChange}
               type="text"
               name="username"
@@ -49,11 +50,12 @@ function Signup({ signup }) {
               id="username"
             />
           </div>
-          <div>
+          <div className="signup-div">
             <label htmlFor="password">
-              <h6 className="input-label"> Password</h6>
+              <h6 className="signup-input-label"> Password</h6>
             </label>
             <input
+              className="signup-input"
               onChange={handleChange}
               type="password"
               name="password"
@@ -61,11 +63,12 @@ function Signup({ signup }) {
               id="password"
             />
           </div>
-          <div>
+          <div className="signup-div">
             <label htmlFor="firstname">
-              <h6 className="input-label"> First Name</h6>
+              <h6 className="signup-input-label"> First Name</h6>
             </label>
             <input
+              className="signup-input"
               onChange={handleChange}
               type="text"
               name="firstName"
@@ -73,11 +76,12 @@ function Signup({ signup }) {
               id="firstName"
             />
           </div>
-          <div>
+          <div className="signup-div">
             <label htmlFor="lastname">
-              <h6 className="input-label">Last Name</h6>
+              <h6 className="signup-input-label">Last Name</h6>
             </label>
             <input
+              className="signup-input"
               onChange={handleChange}
               type="text"
               name="lastName"
@@ -85,11 +89,12 @@ function Signup({ signup }) {
               id="lastName"
             />
           </div>
-          <div>
+          <div className="signup-div">
             <label htmlFor="email">
-              <h6 className="input-label">Email</h6>
+              <h6 className="signup-input-label">Email</h6>
             </label>
             <input
+              className="signup-input"
               onChange={handleChange}
               type="text"
               name="email"
