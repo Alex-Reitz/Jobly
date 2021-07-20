@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import UserContext from "../Context/userContext";
+import "./Login.css";
 
 function Signup({ login }) {
   const [formData, setFormData] = useState({
@@ -30,7 +31,9 @@ function Signup({ login }) {
       <div>
         <form onSubmit={gatherInput}>
           <div>
-            <label htmlFor="firstName">Username</label>
+            <label htmlFor="firstName">
+              <h5 className="input-label">Username</h5>
+            </label>
             <input
               onChange={handleChange}
               type="text"
@@ -40,7 +43,9 @@ function Signup({ login }) {
             />
           </div>
           <div>
-            <label htmlFor="firstName">Password</label>
+            <label htmlFor="firstName">
+              <h5 className="input-label">Password</h5>
+            </label>
             <input
               onChange={handleChange}
               type="password"
@@ -50,7 +55,7 @@ function Signup({ login }) {
             />
           </div>
 
-          <button id="signup">Login</button>
+          <button id="login">Login</button>
         </form>
       </div>
     );

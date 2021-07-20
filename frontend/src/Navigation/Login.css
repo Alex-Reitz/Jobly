@@ -1,0 +1,30 @@
+input {
+  width: 30%;
+  border: 1px solid #316685;
+  border-radius: 4px;
+  display: inline-block;
+  justify-content: center;
+  padding: 0.5em;
+}
+
+input:focus {
+  border: 3px solid #316685;
+}
+
+#login {
+  background-color: #316685;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.input-label {
+  color: #316685;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 3%;
+}

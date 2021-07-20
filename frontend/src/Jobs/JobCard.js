@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import JoblyApi from "../api";
 import UserContext from "../Context/userContext";
 
@@ -42,7 +42,7 @@ function JobCard({ info }) {
       </div>
       <div className="job-salary">
         {info.salary ? (
-          <p>Job Salary: {info.salary}</p>
+          <p>Job Salary: ${info.salary}</p>
         ) : (
           <p>Sorry, no salary data to show.</p>
         )}

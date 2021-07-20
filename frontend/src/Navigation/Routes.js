@@ -6,7 +6,7 @@ import NavBar from "./Navbar";
 import CompanyList from "../Company/CompanyList";
 import JobList from "../Jobs/JobList";
 import Login from "./Login";
-import Signup from "../Signup";
+import Signup from "./Signup";
 import Profile from "./Profile";
 import Logout from "./Logout";
 

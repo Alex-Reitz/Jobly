@@ -53,7 +53,6 @@ function App() {
       getUserInfo();
     }
   }, [token]);
-  console.log(applicationIds);
   return (
     <UserContext.Provider value={{ currentUser, applicationIds }}>
       <div className="App">

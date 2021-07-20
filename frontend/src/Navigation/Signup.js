@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
-import UserContext from "./Context/userContext";
+import UserContext from "../Context/userContext";
+import "./Signup.css";
 
 function Signup({ signup }) {
   const [formData, setFormData] = useState({
@@ -37,7 +38,9 @@ function Signup({ signup }) {
       <div>
         <form onSubmit={gatherInput}>
           <div>
-            <label htmlFor="firstName">Username</label>
+            <label htmlFor="username">
+              <h6 className="input-label"> Username</h6>
+            </label>
             <input
               onChange={handleChange}
               type="text"
@@ -47,7 +50,9 @@ function Signup({ signup }) {
             />
           </div>
           <div>
-            <label htmlFor="firstName">Password</label>
+            <label htmlFor="password">
+              <h6 className="input-label"> Password</h6>
+            </label>
             <input
               onChange={handleChange}
               type="password"
@@ -57,7 +62,9 @@ function Signup({ signup }) {
             />
           </div>
           <div>
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstname">
+              <h6 className="input-label"> First Name</h6>
+            </label>
             <input
               onChange={handleChange}
               type="text"
@@ -67,7 +74,9 @@ function Signup({ signup }) {
             />
           </div>
           <div>
-            <label htmlFor="firstName">Last Name</label>
+            <label htmlFor="lastname">
+              <h6 className="input-label">Last Name</h6>
+            </label>
             <input
               onChange={handleChange}
               type="text"
@@ -77,7 +86,9 @@ function Signup({ signup }) {
             />
           </div>
           <div>
-            <label htmlFor="firstName">Email</label>
+            <label htmlFor="email">
+              <h6 className="input-label">Email</h6>
+            </label>
             <input
               onChange={handleChange}
               type="text"
