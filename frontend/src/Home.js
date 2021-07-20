@@ -3,8 +3,8 @@ import UserContext from "./Context/userContext";
 import { Link } from "react-router-dom";
 
 function Home() {
-  const user = useContext(UserContext);
-  if (!user.username) {
+  const { currentUser } = useContext(UserContext);
+  if (!currentUser.username) {
     return (
       <div>
         <h3>Welcome to Jobly!</h3>
@@ -16,7 +16,7 @@ function Home() {
   } else {
     return (
       <div>
-        <h3>Welcome to Jobly {user.username}</h3>
+        <h3>Welcome to Jobly {currentUser.username}</h3>
       </div>
     );
   }

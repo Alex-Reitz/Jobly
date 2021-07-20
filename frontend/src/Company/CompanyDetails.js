@@ -8,7 +8,7 @@ function CompanyDetails() {
   const { handle } = useParams();
   const [companyData, setCompanyData] = useState([]);
   const [jobsData, setJobsData] = useState([]);
-  const user = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   useEffect(() => {
     async function getCompanyHandle(handle) {
@@ -20,7 +20,7 @@ function CompanyDetails() {
     getCompanyHandle(handle);
   }, [handle]);
 
-  if (!user.username) {
+  if (!currentUser.username) {
     return (
       <div>
         <h1>You must be logged in to access a company detail page</h1>

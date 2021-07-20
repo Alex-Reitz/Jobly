@@ -8,7 +8,7 @@ function JobList() {
     title: "",
   });
   const [jobs, setJobs] = useState([]);
-  const user = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   //Gets jobs list from backend on page load
   useEffect(() => {
@@ -52,7 +52,7 @@ function JobList() {
     evt.preventDefault();
     searchJobNames({ ...jobFormData });
   };
-  if (!user.username) {
+  if (!currentUser.username) {
     return (
       <div>
         <h1>You must be logged in to access the jobs list</h1>

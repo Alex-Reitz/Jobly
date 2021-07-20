@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import JoblyApi from "../api";
 
 function Profile() {
-  const user = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
   //sets the form state
   const [formData, setFormData] = useState({
     password: "password",
@@ -24,7 +24,7 @@ function Profile() {
   const gatherInput = (evt) => {
     evt.preventDefault();
     console.log({ ...formData });
-    update(user.username, { ...formData });
+    update(currentUser.username, { ...formData });
     setFormData({
       firstName: "",
       lastName: "",
@@ -41,7 +41,7 @@ function Profile() {
     updateUser(username, data);
   };
 
-  if (!user.username) {
+  if (!currentUser.username) {
     return (
       <div>
         <h3>Login to see your profile</h3>
@@ -54,13 +54,13 @@ function Profile() {
     return (
       <div>
         <h3>Your Profile</h3>
-        <h5>Username: {user.username}</h5>
+        <h5>Username: {currentUser.username}</h5>
 
         <form onSubmit={gatherInput}>
           <div>
             <label htmlFor="firstName">First Name</label>
             <input
-              placeholder={user.firstName}
+              placeholder={currentUser.firstName}
               onChange={handleChange}
               type="text"
               name="firstName"
@@ -71,7 +71,7 @@ function Profile() {
           <div>
             <label htmlFor="lastName">Last Name</label>
             <input
-              placeholder={user.lastName}
+              placeholder={currentUser.lastName}
               onChange={handleChange}
               type="text"
               name="lastName"
@@ -82,7 +82,7 @@ function Profile() {
           <div>
             <label htmlFor="email">Email</label>
             <input
-              placeholder={user.email}
+              placeholder={currentUser.email}
               onChange={handleChange}
               type="text"
               name="email"

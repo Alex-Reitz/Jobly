@@ -6,7 +6,7 @@ function Signup({ login }) {
     username: "AlexReitz",
     password: "password",
   });
-  const user = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -25,7 +25,7 @@ function Signup({ login }) {
     });
   };
 
-  if (!user.username) {
+  if (!currentUser.username) {
     return (
       <div>
         <form onSubmit={gatherInput}>
@@ -57,7 +57,7 @@ function Signup({ login }) {
   } else {
     return (
       <div>
-        <p>Welcome {user.username}</p>
+        <p>Welcome {currentUser.username}</p>
       </div>
     );
   }

@@ -11,18 +11,17 @@ salary: 88000
 title: "Tourist information centre manager" */
 
 function JobCard({ info }) {
-  const [userApps, updateUserApps] = useState([]);
-  const user = useContext(UserContext);
+  const { currentUser, applicationIds } = useContext(UserContext);
 
   const apply = (username, jobid) => {
     async function applyToJob(username, jobid) {
-      const res = await JoblyApi.apply(user.username, info.id);
+      const res = await JoblyApi.apply(currentUser.username, info.id);
       console.log(res);
       return res;
     }
     applyToJob(username, jobid);
   };
-
+  console.log(applicationIds);
   return (
     <div className="job-content">
       <div className="company-title">
@@ -56,8 +55,9 @@ function JobCard({ info }) {
         )}
       </div>
       <div className="job-equity">
-        <p>{userApps}</p>
-        <button onClick={apply}>Apply</button>
+        <button id={info.id} onClick={apply}>
+          Apply
+        </button>
       </div>
 
       <hr></hr>

@@ -47,14 +47,16 @@ function App() {
         // put the token on the Api class so it can use it to call the API.
         JoblyApi.token = token;
         const res = await JoblyApi.getUser(username);
+        console.log(res.user.applications);
+        setApplicationIds(new Set(res.user.applications));
         return res;
       }
       getUserInfo();
     }
   }, [token]);
-
+  console.log(applicationIds);
   return (
-    <UserContext.Provider value={currentUser}>
+    <UserContext.Provider value={{ currentUser, applicationIds }}>
       <div className="App">
         <Routes signup={signupUser} login={loginUser} logout={logout} />
       </div>

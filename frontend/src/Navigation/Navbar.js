@@ -5,8 +5,8 @@ import { Navbar, Nav, NavItem } from "reactstrap";
 import UserContext from "../Context/userContext";
 
 function NavBar() {
-  const user = useContext(UserContext);
-  if (!user.username) {
+  const { currentUser } = useContext(UserContext);
+  if (!currentUser.username) {
     return (
       <div>
         <Navbar expand="md">
@@ -48,7 +48,7 @@ function NavBar() {
               <NavLink to="/jobs">Jobs</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/profile">{user.username}</NavLink>
+              <NavLink to="/profile">{currentUser.username}</NavLink>
             </NavItem>
             <NavItem>
               <NavLink to="/logout">Logout</NavLink>

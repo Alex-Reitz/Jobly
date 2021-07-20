@@ -8,7 +8,7 @@ function CompanyList() {
     name: "",
   });
   const [companies, setCompanies] = useState([]);
-  const user = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
   //Gets the companies list from backend on page load
   useEffect(() => {
     async function getCompanies() {
@@ -50,7 +50,7 @@ function CompanyList() {
       searchHandle();
     }
   };
-  if (!user.username) {
+  if (!currentUser.username) {
     return (
       <div>
         <h1>You must be logged in to access the company list</h1>
