@@ -43,7 +43,7 @@ function Signup({ login }) {
             <label htmlFor="firstName">Password</label>
             <input
               onChange={handleChange}
-              type="text"
+              type="password"
               name="password"
               value={formData.password}
               id="password"

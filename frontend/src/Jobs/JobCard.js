@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import JoblyApi from "../api";
 import UserContext from "../Context/userContext";
 
@@ -11,7 +11,9 @@ salary: 88000
 title: "Tourist information centre manager" */
 
 function JobCard({ info }) {
+  const [userApps, updateUserApps] = useState([]);
   const user = useContext(UserContext);
+
   const apply = (username, jobid) => {
     async function applyToJob(username, jobid) {
       const res = await JoblyApi.apply(user.username, info.id);
@@ -20,6 +22,7 @@ function JobCard({ info }) {
     }
     applyToJob(username, jobid);
   };
+
   return (
     <div className="job-content">
       <div className="company-title">
@@ -52,88 +55,14 @@ function JobCard({ info }) {
           <p>Sorry, no equity data to show.</p>
         )}
       </div>
-      <button onClick={apply}>Apply</button>
+      <div className="job-equity">
+        <p>{userApps}</p>
+        <button onClick={apply}>Apply</button>
+      </div>
+
       <hr></hr>
     </div>
   );
-
-  /* if (!info.equity && !info.salary) {
-    return (
-      <div className="content">
-        <p>
-          <strong>Company Name: </strong>
-          {info.companyName}
-        </p>
-        <p>
-          <strong>Job Title: </strong>
-          {info.title}
-        </p>
-        <button>Apply</button>
-        <hr />
-      </div>
-    );
-  } else if ((!info.equity || info.equity === "0") && info.salary) {
-    return (
-      <div className="content">
-        <p>
-          <strong>Company Name: </strong>
-          {info.companyName}
-        </p>
-        <p>
-          <strong>Job Title: </strong>
-          {info.title}
-        </p>
-        <p>
-          <strong>Salary:</strong>${info.salary}
-        </p>
-        <p>Equity Options Not Available</p>
-        <button>Apply</button>
-        <hr></hr>
-      </div>
-    );
-  } else if (!info.salary) {
-    return (
-      <div className="content">
-        <p>
-          <strong>Company Name: </strong>
-          {info.companyName}
-        </p>
-        <p>
-          <strong>Job Title: </strong>
-          {info.title}
-        </p>
-        <p>Salary Options Not Available</p>
-        <p>
-          <strong>Equity:</strong>
-          {info.equity}
-        </p>
-        <button>Apply</button>
-        <hr></hr>
-      </div>
-    );
-  } else {
-    return (
-      <div className="content">
-        <p>
-          <strong>Company Name: </strong>
-          {info.companyName}
-        </p>
-        <p>
-          <strong>Job Title: </strong>
-          {info.title}
-        </p>
-        <p>
-          <strong>Salary:</strong>${info.salary}
-        </p>
-        <p>
-          <strong>Equity:</strong>
-          {info.equity}
-        </p>
-        <button>Apply</button>
-        <hr></hr>
-      </div>
-    );
-  } */
 }
 
 export default JobCard;

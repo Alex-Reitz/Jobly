@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Routes from "./Navigation/Routes";
 import JoblyApi from "./api";
 import UserContext from "./Context/userContext";
 import useLocalStorage from "./hooks";
+import jwt from "jsonwebtoken";
 
 function App() {
   //state passed down to list component depending on which route a user takes
   const [token, setToken] = useLocalStorage("token", "");
   const [currentUser, setCurrentUser] = useLocalStorage("currentUser", "");
+  const [applicationIds, setApplicationIds] = useState(new Set([]));
 
   //register as a new user
   const signupUser = (data) => {
@@ -37,12 +39,19 @@ function App() {
   };
   //Call backend to get information about a newly logged in user and update currentUser state when token changes
   useEffect(() => {
-    async function getUserInfo() {
-      const res = await JoblyApi.getUser(currentUser.username);
-      return res;
+    if (!token) {
+      return;
+    } else {
+      async function getUserInfo() {
+        let { username } = jwt.decode(token);
+        // put the token on the Api class so it can use it to call the API.
+        JoblyApi.token = token;
+        const res = await JoblyApi.getUser(username);
+        return res;
+      }
+      getUserInfo();
     }
-    getUserInfo();
-  }, [token, currentUser]);
+  }, [token]);
 
   return (
     <UserContext.Provider value={currentUser}>
