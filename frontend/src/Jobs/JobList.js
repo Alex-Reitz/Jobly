@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import JobCard from "./JobCard";
 import JoblyApi from "../api";
 import UserContext from "../Context/userContext";
+import "./JobList.css";
 
 function JobList() {
   const [jobFormData, setJobFormData] = useState({
@@ -55,17 +56,22 @@ function JobList() {
   if (!currentUser.username) {
     return (
       <div>
-        <h1>You must be logged in to access the jobs list</h1>
+        <h1 className="logged-in-warning">
+          You must be logged in to access the jobs list
+        </h1>
       </div>
     );
   } else {
     return (
-      <div>
-        <h1>Take a look at these Jobs!</h1>
+      <div className="joblist-container">
+        <h1 className="job-heading">Take a look at these Jobs!</h1>
         <div className="search">
           <form onSubmit={gatherJobInput}>
-            <label htmlFor="title">Search Job Titles</label>
+            <label className="search-jobs-label" htmlFor="title">
+              Search Job Titles
+            </label>
             <input
+              className="job-title-search-input"
               onChange={handleJobChange}
               type="text"
               name="title"

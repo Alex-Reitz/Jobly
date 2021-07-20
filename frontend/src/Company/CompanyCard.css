@@ -1,4 +1,15 @@
 .content {
-  display: block;
-  text-align: center;
+  text-align: left;
+  margin: 20px;
+  padding: 5px;
+  outline: 1px solid black;
+}
+
+.company-name-link {
+  padding: 5px;
+  margin: 5px;
+}
+.company-description-card {
+  padding: 5px;
+  margin: 5px;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import CompanyCard from "./CompanyCard";
 import JoblyApi from "../api";
 import UserContext from "../Context/userContext";
+import "./CompanyList.css";
 
 function CompanyList() {
   const [companyFormData, setCompanyFormData] = useState({
@@ -59,12 +60,14 @@ function CompanyList() {
   } else {
     return (
       <div className="company-list-container">
-        <h1 className="company-heading">Here are all the companies we have</h1>
+        <h1 className="company-heading">Here's a list of all companies</h1>
         <div className="search">
           <form onSubmit={gatherCompanyInput}>
-            <label htmlFor="name">Search Company Names</label>
+            <label className="search-company-label" htmlFor="name">
+              Search Company Names
+            </label>
             <input
-              classname="company-search-input"
+              classname="company-list--search-input"
               onChange={handleCompanyChange}
               type="text"
               name="name"
@@ -72,8 +75,8 @@ function CompanyList() {
               id="name"
             />
           </form>
-          <hr></hr>
         </div>
+        <hr></hr>
         {companies.map((company) => (
           <CompanyCard key={company.handle} info={company} />
         ))}

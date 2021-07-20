@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import JoblyApi from "../api";
 import UserContext from "../Context/userContext";
+import "./JobCard.css";
 
 /* {id: 20, title: "Tourist information centre manager", salary: 88000, equity: "0", companyHandle: "foster-rice", …}
 companyHandle: "foster-rice"
@@ -26,13 +27,13 @@ function JobCard({ info }) {
     <div className="job-content">
       <div className="company-title">
         {info.companyName ? (
-          <p>
+          <p className="jobcard-company-name">
             <strong>Company Name: </strong>
             {info.companyName}
           </p>
         ) : undefined}
       </div>
-      <div className="job-title">
+      <div className="job-title-card">
         {info.title ? (
           <p>
             <strong>Job Title: </strong>
@@ -40,31 +41,29 @@ function JobCard({ info }) {
           </p>
         ) : undefined}
       </div>
-      <div className="job-salary">
+      <div className="job-salary-card">
         {info.salary ? (
-          <p>Job Salary: ${info.salary}</p>
+          <strong>Salary: ${info.salary}</strong>
         ) : (
           <p>Sorry, no salary data to show.</p>
         )}
       </div>
-      <div className="job-equity">
+      <div className="job-equity-card">
         {info.equity > 0 ? (
-          <p>Job equity: {info.equity}</p>
+          <strong>Equity: {info.equity}</strong>
         ) : (
           <p>Sorry, no equity data to show.</p>
         )}
       </div>
-      <div className="job-application">
+      <div className="job-application-card">
         {applicationIds.has(info.id) ? (
-          <p>You applied</p>
+          <h4 className="job-status">You applied!</h4>
         ) : (
-          <button id={info.id} onClick={apply}>
+          <button className="job-card-apply" id={info.id} onClick={apply}>
             Apply
           </button>
         )}
       </div>
-
-      <hr></hr>
     </div>
   );
 }

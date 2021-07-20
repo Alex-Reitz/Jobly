@@ -1,0 +1,43 @@
+.job-content {
+  text-align: left;
+  margin: 20px;
+  padding: 5px;
+  outline: 2px solid black;
+  width: 40%;
+  display: inline-block;
+}
+
+.jobcard-company-name {
+  margin: 3px;
+}
+.job-title-card {
+  margin: 3px;
+}
+.job-salary-card {
+  margin: 3px;
+}
+.job-equity-card {
+  margin: 3px;
+}
+.job-application-card {
+  margin: 3px;
+}
+.job-card-apply {
+  background-color: #316685;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  float: right;
+}
+.job-status {
+  text-decoration: none;
+  margin: 4px 2px;
+  font-size: 1rem;
+  border-radius: 5px;
+  float: right;
+}

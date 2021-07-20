@@ -43,7 +43,7 @@ function Profile() {
 
   if (!currentUser.username) {
     return (
-      <div>
+      <div className="logged-in-warning">
         <h3>Login to see your profile</h3>
         <Link to="/signup">Signup</Link>
         <br />

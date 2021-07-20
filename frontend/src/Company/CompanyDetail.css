@@ -1,0 +1,43 @@
+.logged-in-warning {
+  color: black;
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: capitalize;
+}
+
+.heading {
+  color: black;
+  text-align: center;
+  font-size: 2rem;
+  margin: 10px;
+  text-decoration: underline;
+}
+
+.jobs-heading {
+  text-decoration: underline;
+  color: black;
+  text-align: center;
+  font-size: 2rem;
+  margin: 10px;
+}
+.company-name {
+  margin: 5px;
+}
+.company-handle {
+  margin: 5px;
+}
+.company-description {
+  margin: 5px;
+}
+.num-employees {
+  margin: 5px;
+}
+
+.jobs-data {
+  margin-top: 100px;
+}
