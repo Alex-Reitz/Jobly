@@ -47,7 +47,6 @@ function App() {
         // put the token on the Api class so it can use it to call the API.
         JoblyApi.token = token;
         const res = await JoblyApi.getUser(username);
-        console.log(res.user.applications);
         setApplicationIds(new Set(res.user.applications));
         return res;
       }

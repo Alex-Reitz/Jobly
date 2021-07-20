@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import JoblyApi from "../api";
 import UserContext from "../Context/userContext";
 
@@ -13,15 +13,15 @@ title: "Tourist information centre manager" */
 function JobCard({ info }) {
   const { currentUser, applicationIds } = useContext(UserContext);
 
+  useEffect(() => {}, [applicationIds]);
+
   const apply = (username, jobid) => {
     async function applyToJob(username, jobid) {
       const res = await JoblyApi.apply(currentUser.username, info.id);
-      console.log(res);
       return res;
     }
     applyToJob(username, jobid);
   };
-  console.log(applicationIds);
   return (
     <div className="job-content">
       <div className="company-title">
@@ -54,10 +54,14 @@ function JobCard({ info }) {
           <p>Sorry, no equity data to show.</p>
         )}
       </div>
-      <div className="job-equity">
-        <button id={info.id} onClick={apply}>
-          Apply
-        </button>
+      <div className="job-application">
+        {applicationIds.has(info.id) ? (
+          <p>You applied</p>
+        ) : (
+          <button id={info.id} onClick={apply}>
+            Apply
+          </button>
+        )}
       </div>
 
       <hr></hr>
