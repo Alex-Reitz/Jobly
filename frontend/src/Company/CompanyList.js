@@ -67,7 +67,7 @@ function CompanyList() {
               Search Company Names
             </label>
             <input
-              classname="company-list--search-input"
+              className="company-list-search-input"
               onChange={handleCompanyChange}
               type="text"
               name="name"

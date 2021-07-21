@@ -6,7 +6,6 @@
   width: 40%;
   display: inline-block;
 }
-
 .jobcard-company-name {
   margin: 3px;
 }
@@ -33,6 +32,9 @@
   cursor: pointer;
   border-radius: 5px;
   float: right;
+}
+.job-card-applied {
+  display: none;
 }
 .job-status {
   text-decoration: none;

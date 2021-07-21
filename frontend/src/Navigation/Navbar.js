@@ -8,6 +8,7 @@ function Navbar() {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
+
   const { currentUser } = useContext(UserContext);
   if (!currentUser.username) {
     return (

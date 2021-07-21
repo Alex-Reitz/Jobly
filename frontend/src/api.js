@@ -81,7 +81,6 @@ class JoblyApi {
       null,
       "post"
     );
-    console.log(res);
     return res;
   }
 }
