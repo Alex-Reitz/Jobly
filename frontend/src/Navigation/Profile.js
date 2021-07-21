@@ -2,15 +2,16 @@ import React, { useContext, useState } from "react";
 import UserContext from "../Context/userContext";
 import { Link } from "react-router-dom";
 import JoblyApi from "../api";
+import "./Profile.css";
 
 function Profile() {
   const { currentUser } = useContext(UserContext);
   //sets the form state
   const [formData, setFormData] = useState({
-    password: "password",
-    firstName: "testing",
-    lastName: "tested",
-    email: "test@gmail.com",
+    password: "",
+    firstName: "",
+    lastName: "",
+    email: "",
   });
   //updates state based on change in form
   const handleChange = (evt) => {
@@ -45,21 +46,27 @@ function Profile() {
     return (
       <div className="logged-in-warning">
         <h3>Login to see your profile</h3>
-        <Link to="/signup">Signup</Link>
-        <br />
-        <Link to="/login">Login</Link>
+        <Link className="Link" to="/signup">
+          Signup
+        </Link>
+        <Link className="Link" to="/login">
+          Login
+        </Link>
       </div>
     );
   } else {
     return (
-      <div>
-        <h3>Your Profile</h3>
-        <h5>Username: {currentUser.username}</h5>
-
+      <div className="profile-content">
+        <h4 className="profile-heading">
+          Update your profile here, {currentUser.username}
+        </h4>
         <form onSubmit={gatherInput}>
-          <div>
-            <label htmlFor="firstName">First Name</label>
+          <div className="profile-div">
+            <label className="profile-label" htmlFor="firstName">
+              First Name
+            </label>
             <input
+              className="profile-input"
               placeholder={currentUser.firstName}
               onChange={handleChange}
               type="text"
@@ -68,9 +75,12 @@ function Profile() {
               id="firstName"
             />
           </div>
-          <div>
-            <label htmlFor="lastName">Last Name</label>
+          <div className="profile-div">
+            <label className="profile-label" htmlFor="lastName">
+              Last Name
+            </label>
             <input
+              className="profile-input"
               placeholder={currentUser.lastName}
               onChange={handleChange}
               type="text"
@@ -79,9 +89,12 @@ function Profile() {
               id="lastName"
             />
           </div>
-          <div>
-            <label htmlFor="email">Email</label>
+          <div className="profile-div">
+            <label className="profile-label" htmlFor="email">
+              Email
+            </label>
             <input
+              className="profile-input"
               placeholder={currentUser.email}
               onChange={handleChange}
               type="text"
@@ -90,13 +103,16 @@ function Profile() {
               id="email"
             />
           </div>
-          <div>
-            <label htmlFor="password">Password to confirm</label>
+          <div className="profile-div">
+            <label className="profile-label" htmlFor="password">
+              Password
+            </label>
             <input
-              placeholder="Your password"
+              className="profile-input"
               onChange={handleChange}
-              type="text"
+              type="password"
               name="password"
+              placeholder="Password To Confirm Update"
               value={formData.password}
               id="password"
             />

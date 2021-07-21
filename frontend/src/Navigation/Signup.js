@@ -46,6 +46,7 @@ function Signup({ signup }) {
               onChange={handleChange}
               type="text"
               name="username"
+              placeholder="Max 30 Characters"
               value={formData.username}
               id="username"
             />
@@ -57,6 +58,7 @@ function Signup({ signup }) {
             <input
               className="signup-input"
               onChange={handleChange}
+              placeholder="Between 5 and 20 Characters"
               type="password"
               name="password"
               value={formData.password}
@@ -71,6 +73,7 @@ function Signup({ signup }) {
               className="signup-input"
               onChange={handleChange}
               type="text"
+              placeholder="Max 30 Characters"
               name="firstName"
               value={formData.firstName}
               id="firstName"
@@ -83,6 +86,7 @@ function Signup({ signup }) {
             <input
               className="signup-input"
               onChange={handleChange}
+              placeholder="Max 30 Characters"
               type="text"
               name="lastName"
               value={formData.lastName}
@@ -97,6 +101,7 @@ function Signup({ signup }) {
               className="signup-input"
               onChange={handleChange}
               type="text"
+              placeholder="Max 60 Characters"
               name="email"
               value={formData.email}
               id="email"

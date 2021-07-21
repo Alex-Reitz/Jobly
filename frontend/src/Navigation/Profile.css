@@ -1,0 +1,53 @@
+.logged-in-warning {
+  color: black;
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-transform: capitalize;
+  transform: translate(-50%, -50%);
+}
+#update {
+  background-color: #316685;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.profile-heading {
+  margin: 10px;
+  text-transform: capitalize;
+  padding-top: 50px;
+}
+.profile-input {
+  width: 15%;
+  padding: 0.25em;
+}
+input:focus {
+  border: 3px solid #316685;
+}
+.profile-div {
+  margin: 5px;
+}
+.profile-label {
+  margin: 3px;
+  display: inline-block;
+  width: 100px;
+}
+.Link {
+  background-color: #316685;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}

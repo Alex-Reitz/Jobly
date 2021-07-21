@@ -99,6 +99,17 @@ function Navbar() {
               <li className="nav-item">
                 <NavLink
                   exact
+                  to="/profile"
+                  activeClassName="active"
+                  className="nav-links"
+                  onClick={handleClick}
+                >
+                  {currentUser.username}
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  exact
                   to="/logout"
                   activeClassName="active"
                   className="nav-links"
