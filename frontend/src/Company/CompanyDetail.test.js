@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Companies from "./CompanyList";
+import Details from "./CompanyDetails";
 import { MemoryRouter } from "react-router";
 import UserContext from "../Context/userContext";
 
@@ -9,7 +9,7 @@ it("matches snapshot", function () {
   const { asFragment } = render(
     <MemoryRouter>
       <UserContext.Provider value={{ currentUser: testFunc }}>
-        <Companies />
+        <Details />
       </UserContext.Provider>
     </MemoryRouter>
   );
