@@ -4,19 +4,8 @@ import JoblyApi from "../api";
 
 function Applications() {
   const { currentUser, applicationIds } = useContext(UserContext);
-  const [companiesApplied, setCompaniesApplied] = useState([]);
-
-  const arrayIds = Array.from(applicationIds);
-  async function getJobs(id) {
-    const res = await JoblyApi.getJob(id);
-    setCompaniesApplied([...companiesApplied, res.job.company.name]);
-    return res.job.company.name;
-  }
-
-  for (let i = 0; i < arrayIds.length; i++) {
-    getJobs(arrayIds[i]);
-  }
-
+  const jobIds = Array.from(applicationIds);
+  console.log(jobIds);
   if (!currentUser.username) {
     return (
       <div>
@@ -33,6 +22,13 @@ function Applications() {
     return (
       <div>
         <h3>Here are all the Companies you've applied to</h3>
+
+        {jobIds.map((job) => (
+          <li key={job}>
+            <strong>Job ID: </strong>
+            {job}
+          </li>
+        ))}
       </div>
     );
   }
