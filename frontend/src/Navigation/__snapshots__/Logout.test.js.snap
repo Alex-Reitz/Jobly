@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="logout-container"
+  >
+    <h4
+      class="exit-message"
+    >
+      Click logout to leave. We'll see you next time!
+    </h4>
+    <button
+      class="buttonFalse"
+      id="logout"
+    >
+      Logout
+    </button>
+  </div>
+</DocumentFragment>
+`;

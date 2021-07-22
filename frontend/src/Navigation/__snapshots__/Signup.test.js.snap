@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Signup"
+  >
+    <form>
+      <div
+        class="signup-div"
+      >
+        <label
+          for="username"
+        >
+          <h6
+            class="signup-input-label"
+          >
+             Username
+          </h6>
+        </label>
+        <input
+          class="signup-input"
+          id="username"
+          name="username"
+          placeholder="Max 30 Characters"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="signup-div"
+      >
+        <label
+          for="password"
+        >
+          <h6
+            class="signup-input-label"
+          >
+             Password
+          </h6>
+        </label>
+        <input
+          class="signup-input"
+          id="password"
+          name="password"
+          placeholder="Between 5 and 20 Characters"
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        class="signup-div"
+      >
+        <label
+          for="firstname"
+        >
+          <h6
+            class="signup-input-label"
+          >
+             First Name
+          </h6>
+        </label>
+        <input
+          class="signup-input"
+          id="firstName"
+          name="firstName"
+          placeholder="Max 30 Characters"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="signup-div"
+      >
+        <label
+          for="lastname"
+        >
+          <h6
+            class="signup-input-label"
+          >
+            Last Name
+          </h6>
+        </label>
+        <input
+          class="signup-input"
+          id="lastName"
+          name="lastName"
+          placeholder="Max 30 Characters"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="signup-div"
+      >
+        <label
+          for="email"
+        >
+          <h6
+            class="signup-input-label"
+          >
+            Email
+          </h6>
+        </label>
+        <input
+          class="signup-input"
+          id="email"
+          name="email"
+          placeholder="Max 60 Characters"
+          type="text"
+          value=""
+        />
+      </div>
+      <button
+        id="signup"
+      >
+        Signup!
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
