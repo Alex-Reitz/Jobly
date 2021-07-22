@@ -9,6 +9,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
 import Logout from "./Logout";
+import Applications from "./Applications";
 
 function Routes({ signup, login, logout }) {
   return (
@@ -27,6 +28,9 @@ function Routes({ signup, login, logout }) {
           </Route>
           <Route exact path="/jobs">
             <JobList />
+          </Route>
+          <Route exact path="/applications">
+            <Applications />
           </Route>
           <Route exact path="/login">
             <Login login={login} />

@@ -52,7 +52,8 @@ function App() {
       }
       getUserInfo();
     }
-  }, [token]);
+  }, [token, applicationIds]);
+
   return (
     <UserContext.Provider value={{ currentUser, applicationIds }}>
       <div className="App">
