@@ -1,10 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
-import JobCard from "../Jobs/JobCard";
+import React, { useContext, useState } from "react";
 import UserContext from "../Context/userContext";
+import JoblyApi from "../api";
 
 function Applications() {
   const { currentUser, applicationIds } = useContext(UserContext);
-  console.log(currentUser.applications);
+  const [companiesApplied, setCompaniesApplied] = useState([]);
+
+  const arrayIds = Array.from(applicationIds);
+  async function getJobs(id) {
+    const res = await JoblyApi.getJob(id);
+    setCompaniesApplied([...companiesApplied, res.job.company.name]);
+    return res.job.company.name;
+  }
+
+  for (let i = 0; i < arrayIds.length; i++) {
+    getJobs(arrayIds[i]);
+  }
+
   if (!currentUser.username) {
     return (
       <div>
@@ -20,7 +32,7 @@ function Applications() {
   } else {
     return (
       <div>
-        <h3>Here are all the jobs you've applied to</h3>
+        <h3>Here are all the Companies you've applied to</h3>
       </div>
     );
   }

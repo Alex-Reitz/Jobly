@@ -52,7 +52,7 @@ function App() {
       }
       getUserInfo();
     }
-  }, [token, applicationIds]);
+  }, [token]);
 
   return (
     <UserContext.Provider value={{ currentUser, applicationIds }}>
