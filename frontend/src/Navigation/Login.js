@@ -63,7 +63,7 @@ function Signup({ login }) {
     );
   } else {
     return (
-      <div class="welcome">
+      <div className="welcome">
         <h3>Welcome, {currentUser.username}</h3>
       </div>
     );

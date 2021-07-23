@@ -1,0 +1,13 @@
+.applications-heading {
+  color: black;
+  text-align: center;
+  font-size: 2rem;
+  margin: 10px;
+  text-transform: capitalize;
+}
+.application-list-item {
+  text-decoration: underline;
+  list-style: none;
+  display: block;
+  margin: 2px;
+}
