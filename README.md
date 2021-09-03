@@ -26,6 +26,17 @@
   <img width="1783" alt="HomePageLoggedIn" src="https://user-images.githubusercontent.com/25966709/132072758-e52fe0fb-7323-42ae-ae94-701cc639af27.png">
 </div>
 
+<div align='center'>
+  <h6>Companies tab</h6>
+<img width="1461" alt="companiesTab" src="https://user-images.githubusercontent.com/25966709/132074982-e6bcb953-bf63-4d2c-ade7-97026dc163e7.png">
+
+</div>
+
+<div align='center'>
+  <h6>A look at the jobs page</h6>
+  <img width="1541" alt="JobsTab" src="https://user-images.githubusercontent.com/25966709/132074810-8bfd2008-f927-4db9-8e20-8a57eff52a88.png">
+</div>
+
 # 👨‍💻 Tech stack
 
 Here's a brief high-level overview of the tech stack the app uses:
