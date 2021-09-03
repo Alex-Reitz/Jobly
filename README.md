@@ -28,8 +28,7 @@
 
 <div align='center'>
   <h6>Companies tab</h6>
-<img width="1461" alt="companiesTab" src="https://user-images.githubusercontent.com/25966709/132074982-e6bcb953-bf63-4d2c-ade7-97026dc163e7.png">
-
+  <img width="1790" alt="Screen Shot 2021-09-03 at 7 52 24 PM" src="https://user-images.githubusercontent.com/25966709/132075323-46fd61a8-6064-4973-9e17-bb37b5342cb3.png">
 </div>
 
 <div align='center'>
@@ -37,6 +36,10 @@
   <img width="1541" alt="JobsTab" src="https://user-images.githubusercontent.com/25966709/132074810-8bfd2008-f927-4db9-8e20-8a57eff52a88.png">
 </div>
 
+<div align='center'>
+  <h6>Company page - Apply to a job</h6>
+<img width="1786" alt="Screen Shot 2021-09-03 at 7 56 08 PM" src="https://user-images.githubusercontent.com/25966709/132075339-f9783719-70c3-41ab-9fad-407c41d4da98.png">
+</div>
 # 👨‍💻 Tech stack
 
 Here's a brief high-level overview of the tech stack the app uses:
