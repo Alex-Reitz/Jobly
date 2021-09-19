@@ -40,7 +40,7 @@
   <h6>Company page - Apply to a job</h6>
 <img width="1786" alt="Screen Shot 2021-09-03 at 7 56 08 PM" src="https://user-images.githubusercontent.com/25966709/132075339-f9783719-70c3-41ab-9fad-407c41d4da98.png">
 </div>
-# 👨‍💻 Tech stack
+👨‍💻 Tech stack
 
 Here's a brief high-level overview of the tech stack the app uses:
 
