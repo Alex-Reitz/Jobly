@@ -44,7 +44,7 @@
 
 Here's a brief high-level overview of the tech stack the app uses:
 
-- This project uses the [Node](https://nodejs.org/en/), an asynchronous event driven JavaScript runtime coupled with the [Express](https://expressjs.com/) framework.
+- This project uses [Node](https://nodejs.org/en/), an asynchronous event driven JavaScript runtime coupled with the [Express](https://expressjs.com/) framework.
 - For persistent storage (database), the app uses [PostgreSQL](https://www.postgresql.org/) which allows the app to create a custom storage schema and save it to a local database.
 - For the front end the app uses React.js functional components and hooks to handle state, make API calls, and handle events.
 <br />
